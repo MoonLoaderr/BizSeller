@@ -29,7 +29,7 @@ local connectTime = imgui.new.char[256](config.main.time)
 local delay = imgui.new.int(config.main.floodDelay)
 local selectSpawn = false
 local try = 0
-local type = { u8"Карта банка", u8"QIWI"}
+local type = { u8"РљР°СЂС‚Р° Р±Р°РЅРєР°", u8"QIWI"}
 local imType = imgui.new["const char*"][#type](type)
 local imTypeInt = imgui.new.int(0)
 local sellBizDial = false
@@ -131,9 +131,9 @@ imgui.OnFrame(function() return window[0] end, function()
             inicfg.save(config, fileName)
         end
         imgui.SameLine()
-        imgui.Question(u8"Данная функция выключит пк через 5 минут после попытки слить биз")
+        imgui.Question(u8"Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РІС‹РєР»СЋС‡РёС‚ РїРє С‡РµСЂРµР· 5 РјРёРЅСѓС‚ РїРѕСЃР»Рµ РїРѕРїС‹С‚РєРё СЃР»РёС‚СЊ Р±РёР·")
 
-        if(imgui.InputTextWithHint("##asd", u8"Введите ссылку на свой вк, например: https://vk.com/username", vkInput, 256)) then
+        if(imgui.InputTextWithHint("##asd", u8"Р’РІРµРґРёС‚Рµ СЃСЃС‹Р»РєСѓ РЅР° СЃРІРѕР№ РІРє, РЅР°РїСЂРёРјРµСЂ: https://vk.com/username", vkInput, 256)) then
             config.main.vk = ffi.string(vkInput)
             inicfg.save(config, fileName)
         end
@@ -152,10 +152,10 @@ imgui.OnFrame(function() return window[0] end, function()
             end
         end
         
-        imgui.Question(u8"Если включен checkbox, то скрипт автоматически ответит на диалог")
+        imgui.Question(u8"Р•СЃР»Рё РІРєР»СЋС‡РµРЅ checkbox, С‚Рѕ СЃРєСЂРёРїС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РѕС‚РІРµС‚РёС‚ РЅР° РґРёР°Р»РѕРі")
 
         if(config.main.type == 1) then
-            if(imgui.InputTextWithHint("##assd", u8"Введите номер своей карты и банк, например: 0000 0000 0000 0000 (Карта банка \"MonoBank\")", cardIdInput, 256)) then
+            if(imgui.InputTextWithHint("##assd", u8"Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЃРІРѕРµР№ РєР°СЂС‚С‹ Рё Р±Р°РЅРє, РЅР°РїСЂРёРјРµСЂ: 0000 0000 0000 0000 (РљР°СЂС‚Р° Р±Р°РЅРєР° \"MonoBank\")", cardIdInput, 256)) then
                 config.main.numberCard = u8:decode(ffi.string(cardIdInput))
                 inicfg.save(config, fileName)
                 sampAddChatMessage((config.main.numberCard), -1)
@@ -175,7 +175,7 @@ imgui.OnFrame(function() return window[0] end, function()
                 end
             end
         else
-            if(imgui.InputTextWithHint("##assddsd", u8"Введите номер QIWI, например: +193291319319", qiwi, 256)) then
+            if(imgui.InputTextWithHint("##assddsd", u8"Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ QIWI, РЅР°РїСЂРёРјРµСЂ: +193291319319", qiwi, 256)) then
                 config.main.qiwi = ffi.string(qiwi)
                 inicfg.save(config, fileName)
             end
@@ -193,15 +193,15 @@ imgui.OnFrame(function() return window[0] end, function()
             end
         end
 
-        imgui.Question(u8"Если включен checkbox, то скрипт автоматически ответит на диалог")
+        imgui.Question(u8"Р•СЃР»Рё РІРєР»СЋС‡РµРЅ checkbox, С‚Рѕ СЃРєСЂРёРїС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РѕС‚РІРµС‚РёС‚ РЅР° РґРёР°Р»РѕРі")
 
         
-        if(imgui.InputTextWithHint("##asssd", u8"Введите время в какое сливать биз, например: 4:34:00", connectTime, 256)) then 
+        if(imgui.InputTextWithHint("##asssd", u8"Р’РІРµРґРёС‚Рµ РІСЂРµРјСЏ РІ РєР°РєРѕРµ СЃР»РёРІР°С‚СЊ Р±РёР·, РЅР°РїСЂРёРјРµСЂ: 4:34:00", connectTime, 256)) then 
             config.main.time = ffi.string(connectTime)
             inicfg.save(config, fileName)
         end
 
-        imgui.Question(u8"За минуту до указаного времени скрипт начнет подключатся к серверу и сам выберет спавн\nВ указаное время начнет сливать бизнес за реал")
+        imgui.Question(u8"Р—Р° РјРёРЅСѓС‚Сѓ РґРѕ СѓРєР°Р·Р°РЅРѕРіРѕ РІСЂРµРјРµРЅРё СЃРєСЂРёРїС‚ РЅР°С‡РЅРµС‚ РїРѕРґРєР»СЋС‡Р°С‚СЃСЏ Рє СЃРµСЂРІРµСЂСѓ Рё СЃР°Рј РІС‹Р±РµСЂРµС‚ СЃРїР°РІРЅ\nР’ СѓРєР°Р·Р°РЅРѕРµ РІСЂРµРјСЏ РЅР°С‡РЅРµС‚ СЃР»РёРІР°С‚СЊ Р±РёР·РЅРµСЃ Р·Р° СЂРµР°Р»")
 
 
         if(imgui.SliderInt("##odfh6td9f6", delay, 0, 2000)) then
@@ -209,10 +209,10 @@ imgui.OnFrame(function() return window[0] end, function()
             inicfg.save(config, fileName)
         end
 
-        imgui.Question(u8"Задержка в миллисекундах между попытками слить бизнес за реал")
+        imgui.Question(u8"Р—Р°РґРµСЂР¶РєР° РІ РјРёР»Р»РёСЃРµРєСѓРЅРґР°С… РјРµР¶РґСѓ РїРѕРїС‹С‚РєР°РјРё СЃР»РёС‚СЊ Р±РёР·РЅРµСЃ Р·Р° СЂРµР°Р»")
         imgui.PushItemWidth(415)
 
-        if(imgui.Button((config.main.enabled) and u8"Выключить" or u8"Включить")) then
+        if(imgui.Button((config.main.enabled) and u8"Р’С‹РєР»СЋС‡РёС‚СЊ" or u8"Р’РєР»СЋС‡РёС‚СЊ")) then
             config.main.enabled = not config.main.enabled
             inicfg.save(config, fileName)
         end
@@ -229,7 +229,7 @@ function main()
     
     lua_thread.create(function() 
         while true do wait(1000) 
-            -- Счет инфы
+            -- РЎС‡РµС‚ РёРЅС„С‹
                 if(config.main.enabled) then
                     for i = 1, #timeOnShowDialog do 
                         local sum = 0
@@ -250,10 +250,10 @@ function main()
     while true do wait(0) 
         local ctime = os.date("*t")
         local time = string.format("%02d:%02d:%02d", ctime.hour, ctime.min, ctime.sec)
-        local curHours, curMin, curSec = string.match(time, "(%d+):(%d+):(%d+)") -- Время которое сейчас
-        local hours, min, sec = string.match(config.main.time, "(%d+):(%d+):(%d+)") -- Время кфг
+        local curHours, curMin, curSec = string.match(time, "(%d+):(%d+):(%d+)") -- Р’СЂРµРјСЏ РєРѕС‚РѕСЂРѕРµ СЃРµР№С‡Р°СЃ
+        local hours, min, sec = string.match(config.main.time, "(%d+):(%d+):(%d+)") -- Р’СЂРµРјСЏ РєС„Рі
         if(selectSpawn and config.main.enabled) then
-            -- Выбор спавна
+            -- Р’С‹Р±РѕСЂ СЃРїР°РІРЅР°
             sampSendDialogResponse(sampGetCurrentDialogId(), 1, 4, "")
             sampCloseCurrentDialogWithButton(1)
             selectSpawn = false
@@ -274,25 +274,25 @@ end
 function sampev.onSendDialogResponse(dialogId, button, listboxId, inputsDialog) 
     sampAddChatMessage(getTime() .. "onSendDialogResponse: " .. ((button ~= -1) and dialogButtonsText[button] or "Closed dialog (Canceled)"), -1)
     if(config.main.enabled) then
-        if(sampGetDialogCaption():find("Выбор места")) then
+        if(sampGetDialogCaption():find("Р’С‹Р±РѕСЂ РјРµСЃС‚Р°")) then
             table.insert(timeOnSendDialogResponse[1], ms())
         end
-        if(sampGetDialogCaption():find("Мои бизнесы")) then
+        if(sampGetDialogCaption():find("РњРѕРё Р±РёР·РЅРµСЃС‹")) then
             table.insert(timeOnSendDialogResponse[2], ms())
         end
-        if(sampGetDialogCaption():find("Меню")) then
+        if(sampGetDialogCaption():find("РњРµРЅСЋ")) then
             table.insert(timeOnSendDialogResponse[3], ms())
         end
-        if(sampGetDialogCaption():find("Управления бизнесом")) then
+        if(sampGetDialogCaption():find("РЈРїСЂР°РІР»РµРЅРёСЏ Р±РёР·РЅРµСЃРѕРј")) then
             table.insert(timeOnSendDialogResponse[4], ms())
         end
-        if(sampGetDialogCaption():find("Продажа бизнеса")) then
+        if(sampGetDialogCaption():find("РџСЂРѕРґР°Р¶Р° Р±РёР·РЅРµСЃР°")) then
             table.insert(timeOnSendDialogResponse[5], ms())
         end
-        if(sampGetDialogText():find("Укажите реальную ссылку на страницу")) then 
+        if(sampGetDialogText():find("РЈРєР°Р¶РёС‚Рµ СЂРµР°Р»СЊРЅСѓСЋ СЃСЃС‹Р»РєСѓ РЅР° СЃС‚СЂР°РЅРёС†Сѓ")) then 
             table.insert(timeOnSendDialogResponse[6], ms())
         end
-        if(sampGetDialogText():find("Укажите реальные реквизиты")) then 
+        if(sampGetDialogText():find("РЈРєР°Р¶РёС‚Рµ СЂРµР°Р»СЊРЅС‹Рµ СЂРµРєРІРёР·РёС‚С‹")) then 
             table.insert(timeOnSendDialogResponse[7], ms())
         end
     end
@@ -303,27 +303,27 @@ function sampev.onShowDialog(dialogId, style, title, button1, button2, text)
     dialogButtonsText[1] = button1
     dialogButtonsText[2] = button2
     if(config.main.enabled) then
-        if(sampGetDialogCaption():find("Мои бизнесы")) then
+        if(sampGetDialogCaption():find("РњРѕРё Р±РёР·РЅРµСЃС‹")) then
             table.insert(timeOnShowDialog[2], ms())
         end
-        if(sampGetDialogCaption():find("Меню")) then
+        if(sampGetDialogCaption():find("РњРµРЅСЋ")) then
             table.insert(timeOnShowDialog[3], ms())
         end
-        if(sampGetDialogCaption():find("Управления бизнесом")) then
+        if(sampGetDialogCaption():find("РЈРїСЂР°РІР»РµРЅРёСЏ Р±РёР·РЅРµСЃРѕРј")) then
             table.insert(timeOnShowDialog[4], ms())
         end
-        if(sampGetDialogText():find("Укажите реальные реквизиты")) then 
+        if(sampGetDialogText():find("РЈРєР°Р¶РёС‚Рµ СЂРµР°Р»СЊРЅС‹Рµ СЂРµРєРІРёР·РёС‚С‹")) then 
             table.insert(timeOnShowDialog[7], ms())
         end
-        if(text:find("Укажите реальную ссылку на страницу")) then
+        if(text:find("РЈРєР°Р¶РёС‚Рµ СЂРµР°Р»СЊРЅСѓСЋ СЃСЃС‹Р»РєСѓ РЅР° СЃС‚СЂР°РЅРёС†Сѓ")) then
             inputsDialog = true
             table.insert(timeOnShowDialog[6], ms())
         end
-        if(title:find("Выбор места")) then
+        if(title:find("Р’С‹Р±РѕСЂ РјРµСЃС‚Р°")) then
             selectSpawn = true
             table.insert(timeOnShowDialog[1], ms())
         end
-        if(title:find("Продажа бизнеса")) then
+        if(title:find("РџСЂРѕРґР°Р¶Р° Р±РёР·РЅРµСЃР°")) then
             sellBizDial = true
             table.insert(timeOnShowDialog[5], ms())
         end
@@ -331,7 +331,7 @@ function sampev.onShowDialog(dialogId, style, title, button1, button2, text)
 end
 
 function sampev.onServerMessage(color, text) 
-    if(text:find("Внимание! Начался аукцион на бизнес")) then
+    if(text:find("Р’РЅРёРјР°РЅРёРµ! РќР°С‡Р°Р»СЃСЏ Р°СѓРєС†РёРѕРЅ РЅР° Р±РёР·РЅРµСЃ")) then
         config.main.enabled = false
         inicfg.save(config, fileName)
     end
